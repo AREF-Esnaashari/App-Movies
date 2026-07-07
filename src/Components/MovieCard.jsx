@@ -1,12 +1,16 @@
-export function MovieCard() {
+export function MovieCard({ movies }) {
   return (
-    <article className="movie-card">
-      <img className="movie-poster" src="" alt="" />
+    <>
+      {movies.map((movie) => (
+        <div className="movie-card" key={movie.Imdb}>
+          <img className="movie-poster" src={movie.Poster} alt={movie.Title} />
 
-      <div className="movie-info">
-        <h3 className="movie-title">Movie Name</h3>
-        <p className="movie-year">2024</p>
-      </div>
-    </article>
+          <div className="movie-info">
+            <h3 className="movie-title">{movie.Title}</h3>
+            <p className="movie-year">{movie.Year}</p>
+          </div>
+        </div>
+      ))}
+    </>
   );
 }

@@ -60,8 +60,9 @@ body {
     border-radius: 12px;
     background: rgba(255, 255, 255, .05);
     color: white;
-    font-size: 15px;
+    font-size: 17px;
     transition: .3s;
+    font-family: sf mono;
 }
 
 .search-bar::placeholder {
@@ -149,4 +150,23 @@ body {
     color: #60A5FA;
     font-size: 14px;
     font-weight: 500;
+}
+
+.loding>h3 {
+    font-weight: bold;
+    color: white;
+    font-family: sf mono;
+    font-size: 40px;
+}
+
+.loding>p {
+    color: rgba(247, 247, 247, 0.418);
+    font-size: 20px;
+}
+
+.errorFetching>h3 {
+    font-weight: bold;
+    color: white;
+    font-family: sf mono;
+    font-size: 25px;
 }
