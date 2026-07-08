@@ -26,9 +26,9 @@ body {
     padding: 0 30px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 18px;
-    box-shadow: 0 8px 35px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(255, 255, 255, .03);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 
@@ -39,7 +39,7 @@ body {
 .logo {
     font-size: 32px;
     font-weight: 700;
-    background: linear-gradient(90deg, #4FACFE, #00F2FE);
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
@@ -58,20 +58,20 @@ body {
     border: none;
     outline: none;
     border-radius: 12px;
-    background: rgba(255, 255, 255, .05);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
     font-size: 17px;
-    transition: .3s;
+    transition: 0.3s;
     font-family: sf mono;
 }
 
 .search-bar::placeholder {
-    color: #9CA3AF;
+    color: #9ca3af;
 }
 
 .search-bar:focus {
-    background: rgba(255, 255, 255, .08);
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, .45), 0 0 35px rgba(59, 130, 246, .18);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.45), 0 0 35px rgba(59, 130, 246, 0.18);
 }
 
 
@@ -80,14 +80,14 @@ body {
 ==================================== */
 
 .results-count {
-    color: #D1D5DB;
+    color: #d1d5db;
     font-weight: 500;
 }
 
 .watchlist-icon {
     font-size: 24px;
     cursor: pointer;
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .watchlist-icon:hover {
@@ -116,24 +116,24 @@ body {
     width: 220px;
     overflow: hidden;
     border-radius: 18px;
-    background: rgba(255, 255, 255, .05);
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
-    transition: .3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 
 .movie-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: #3B82F6;
-    box-shadow: 0 15px 45px rgba(59, 130, 246, .25);
+    border-color: #3b82f6;
+    box-shadow: 0 15px 45px rgba(59, 130, 246, 0.25);
 }
 
 .movie-poster {
     width: 100%;
     height: 310px;
     object-fit: cover;
-    background: #1F2937;
+    background: #1f2937;
 }
 
 .movie-info {
@@ -147,7 +147,7 @@ body {
 }
 
 .movie-year {
-    color: #60A5FA;
+    color: #60a5fa;
     font-size: 14px;
     font-weight: 500;
 }
@@ -169,4 +169,121 @@ body {
     color: white;
     font-family: sf mono;
     font-size: 25px;
+}
+
+.detailsMovie {
+    width: 94%;
+    display: flex;
+    background: linear-gradient(160deg, #050816 0%, #08111f 55%, #09162b 100%);
+    box-shadow: 0px 0px 13px rgba(235, 235, 235, 0.404);
+    border-radius: 8px;
+    transition: 0.4s ease;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    animation: fade 0.5s 0s ease alternate;
+}
+
+@keyframes fade {
+    from {
+        transform: translateY(-10px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+.headerSection {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.imgDetails {
+    padding: 10px;
+    border-radius: 40px;
+    width: 40%;
+    object-fit: cover;
+    height: 400px;
+}
+
+.imdbRating {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: rgb(255, 166, 0);
+    padding: 13px 0px;
+    color: black;
+    padding-left: 4px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.section {
+    width: 100%;
+    height: 300px;
+}
+
+.titles {
+    padding: 10px;
+}
+
+.titles> :first-child {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.movieMeta {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.671);
+    font-size: 14px;
+}
+
+.plot {
+    padding: 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.footer {
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.detailsMovie {
+    position: relative;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 100;
+}
+
+.closeBtn:hover {
+    background: #0ea5e9;
+    transform: scale(1.1) rotate(90deg);
+}
+
+.closeBtn:active {
+    transform: scale(0.95);
 }
