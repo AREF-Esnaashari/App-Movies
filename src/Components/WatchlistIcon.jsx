@@ -1,3 +1,7 @@
-export function WatchlistIcon() {
-  return <h3 className="watchlist-icon">📽</h3>;
+export function WatchlistIcon({ handleModalWatchList }) {
+  return (
+    <h3 className="watchlist-icon" onClick={handleModalWatchList}>
+      📽
+    </h3>
+  );
 }

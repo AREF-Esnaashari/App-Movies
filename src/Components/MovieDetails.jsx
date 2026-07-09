@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ErrorFetching } from "./ErrorFetching";
 import { LoadingFetch } from "./LoadingFetch";
+import Rating from "./rating";
 const KEY = "f4177a14";
 
 export function MovieDetails({
@@ -11,17 +12,22 @@ export function MovieDetails({
   setErrorFetching,
   errorFetching,
   loadingFetching,
+  setUserRating,
+  userRating,
   setLoadingFetching,
+  setIsOpenModalWatchList,
+  setWatchList,
+  watchlist
 }) {
   useEffect(() => {
     if (!selectedId) return;
-    
+
     const controller = new AbortController();
     async function fetchMovieDetails() {
       try {
         setLoadingFetching(true);
         setErrorFetching("");
-
+       setIsOpenModalWatchList(false)
         let res = await fetch(
           `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`,
           { signal: controller.signal },
@@ -32,8 +38,6 @@ export function MovieDetails({
         if (data.Response === "False") throw new Error("Incorrect IMDb ID.");
 
         setMovieDetails(data);
-
-  
       } catch (err) {
         if (err.name !== "AbortError") {
           setErrorFetching(err.message);
@@ -63,13 +67,54 @@ export function MovieDetails({
     <>
       {loadingFetching && <LoadingFetch />}
       {!loadingFetching && !errorFetching && (
-        <Details movieDetails={movieDetails} setSelectedId={setSelectedId} />
+        <Details
+          movieDetails={movieDetails}
+          setSelectedId={setSelectedId}
+          userRating={userRating}
+          setWatchList={setWatchList}
+          setUserRating={setUserRating}
+          watchlist={watchlist}
+        />
       )}
       {errorFetching && <ErrorFetching messageError={errorFetching} />}
     </>
   );
 }
-function Details({ movieDetails, setSelectedId }) {
+function Details({
+  movieDetails,
+  setSelectedId,
+  setUserRating,
+  userRating,
+  watchlist,
+  setWatchList,
+}) {
+  function handelAdd(move) {
+    let {
+      Title: title,
+      imdbID: imdbID,
+      imdbRating: imdbRating,
+      Poster: poster,
+      Runtime: Runtime,
+      Year: year,
+    } = move;
+    let newItem = {
+      title: title,
+      id: imdbID,
+      imdbRating: Number(imdbRating),
+      poster: poster,
+      Runtime: Number(Runtime.split(" ")[0]),
+      userRating,
+      year,
+    };
+    setWatchList((prev) => [...prev, newItem]);
+  }
+
+  const watchedMovie = watchlist.find(
+    (item) => item.id === movieDetails.imdbID,
+  );
+
+  const isExist = Boolean(watchedMovie);
+
   return (
     <div className="detailsMovie">
       <button className="closeBtn" onClick={() => setSelectedId(null)}>
@@ -83,6 +128,23 @@ function Details({ movieDetails, setSelectedId }) {
           alt={movieDetails.Title}
         />
         <span className="imdbRating">{movieDetails.imdbRating}⭐</span>
+        <div className="RatingContainer">
+          {isExist ? (
+            <span>You rated this movie {watchedMovie.userRating} ⭐</span>
+          ) : userRating ? (
+            <div className="userActions">
+              <button
+                className="btn-add"
+                onClick={() => handelAdd(movieDetails)}
+              >
+                Add to list +
+              </button>
+              <span>You rated this movie {userRating} ⭐</span>
+            </div>
+          ) : (
+            <Rating setUserRating={setUserRating} />
+          )}
+        </div>
       </div>
 
       <div className="section">
