@@ -17,7 +17,7 @@ export function MovieDetails({
   setLoadingFetching,
   setIsOpenModalWatchList,
   setWatchList,
-  watchlist
+  watchlist,
 }) {
   useEffect(() => {
     if (!selectedId) return;
@@ -27,7 +27,7 @@ export function MovieDetails({
       try {
         setLoadingFetching(true);
         setErrorFetching("");
-       setIsOpenModalWatchList(false)
+        setIsOpenModalWatchList(false);
         let res = await fetch(
           `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`,
           { signal: controller.signal },
@@ -49,7 +49,13 @@ export function MovieDetails({
     fetchMovieDetails();
 
     return () => controller.abort();
-  }, [selectedId]);
+  }, [
+    selectedId,
+setLoadingFetching,
+setErrorFetching,
+setMovieDetails,
+setIsOpenModalWatchList,
+  ]);
   useEffect(() => {
     function closeMovieDetails(e) {
       if (e.key === "Escape") {
@@ -88,7 +94,7 @@ function Details({
   watchlist,
   setWatchList,
 }) {
-  function handelAdd(move) {
+  function handleAdd(movie) {
     let {
       Title: title,
       imdbID: imdbID,
@@ -96,7 +102,7 @@ function Details({
       Poster: poster,
       Runtime: Runtime,
       Year: year,
-    } = move;
+    } = movie;
     let newItem = {
       title: title,
       id: imdbID,
@@ -116,7 +122,7 @@ function Details({
   const isExist = Boolean(watchedMovie);
 
   return (
-    <div className="detailsMovie">
+    <div className="detailsMovie" >
       <button className="closeBtn" onClick={() => setSelectedId(null)}>
         ✕
       </button>
@@ -135,7 +141,7 @@ function Details({
             <div className="userActions">
               <button
                 className="btn-add"
-                onClick={() => handelAdd(movieDetails)}
+                onClick={() => handleAdd(movieDetails)}
               >
                 Add to list +
               </button>

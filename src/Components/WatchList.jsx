@@ -12,9 +12,7 @@ export default function WatchList({ watchlist, setWatchList }) {
       return total + curr.userRating;
     }, 0) / watchlist.length;
   function handleDeleteLi(id) {
-    setWatchList((watchlist) =>
-      watchlist.filter((movie) => movie.imdbID !== id),
-    );
+    setWatchList((watchlist) => watchlist.filter((movie) => movie.id !== id));
   }
   return (
     <div className="watchlist">
@@ -25,20 +23,20 @@ export default function WatchList({ watchlist, setWatchList }) {
         <span>URate🌟:{URate.toFixed(2) || ""}</span>
       </div>
       <div className="section-watchlist">
-        {watchlist.map((move) => (
-          <div className="item-watchlist" key={move.imdbID}>
+        {watchlist.map((movie) => (
+          <div className="item-watchlist" key={movie.id}>
             <div className="imageWatchList">
-              <img src={move.poster} alt={move.title} />
+              <img src={movie.poster} alt={movie.title} />
             </div>
             <div className="metaWatchList">
-              <p>{move.title}</p>
-              <p>⏳ {move.Runtime}</p>
-              <p>⭐ {move.imdbRating}</p>
-              <p>🌟 {move.userRating}</p>
+              <p>{movie.title}</p>
+              <p>⏳ {movie.Runtime}</p>
+              <p>⭐ {movie.imdbRating}</p>
+              <p>🌟 {movie.userRating}</p>
               <button
                 className="closeBtn"
                 style={{ backgroundColor: "red" }}
-                onClick={() => handleDeleteLi(move.imdbID)}
+                onClick={() => handleDeleteLi(movie.id)}
               >
                 X
               </button>

@@ -430,3 +430,150 @@ svg {
     flex-direction: column;
     position: relative;
 }
+
+
+/* ================================
+          RESPONSIVE
+================================ */
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .navigation {
+        width: 92%;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .logo {
+        font-size: 26px;
+    }
+    .search-bar {
+        width: 100%;
+        order: 3;
+    }
+    .container-movies {
+        width: 92%;
+        justify-content: center;
+    }
+    .movie-card {
+        width: 200px;
+    }
+    /* Movie Details */
+    .detailsMovie {
+        width: 92%;
+    }
+    .headerSection {
+        height: auto;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 50px;
+    }
+    .imgDetails {
+        width: 70%;
+        height: 350px;
+    }
+    .RatingContainer {
+        width: 70%;
+    }
+    .section {
+        height: auto;
+    }
+    .titles> :first-child {
+        font-size: 25px;
+    }
+    /* Watchlist */
+    .watchlist {
+        width: 90%;
+        right: 5%;
+    }
+    .header-watchlist {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .header-watchlist>span {
+        padding: 15px;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    body {
+        overflow-x: hidden;
+    }
+    .navigation {
+        margin: 15px auto;
+        border-radius: 14px;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .results-count {
+        font-size: 13px;
+    }
+    .container-movies {
+        gap: 15px;
+        margin-top: 25px;
+    }
+    .movie-card {
+        width: 160px;
+    }
+    .movie-poster {
+        height: 230px;
+    }
+    .movie-title {
+        font-size: 15px;
+    }
+    /* Details */
+    .imgDetails {
+        width: 90%;
+        height: 280px;
+        border-radius: 25px;
+    }
+    .imdbRating {
+        top: 10px;
+        left: 10px;
+    }
+    .RatingContainer {
+        width: 90%;
+        font-size: 13px;
+    }
+    .titles> :first-child {
+        font-size: 22px;
+    }
+    .plot {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    .footer {
+        font-size: 14px;
+        text-align: center;
+    }
+    /* Watchlist */
+    .watchlist {
+        top: 80px;
+        height: 80vh;
+        width: 95%;
+        right: 2.5%;
+    }
+    .item-watchlist {
+        height: 90px;
+    }
+    .imageWatchList {
+        width: 35%;
+    }
+    .metaWatchList {
+        width: 55%;
+        font-size: 13px;
+    }
+    .closeBtn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
